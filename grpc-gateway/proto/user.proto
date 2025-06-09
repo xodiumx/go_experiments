@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "example.com/project/gen/go/userpb";
+
+import "google/api/annotations.proto";
+
+// gRPC-сервис управления пользователями
+service UserService {
+  // Получить пользователя по ID: /v1/users/123
+  rpc GetUser(GetUserRequest) returns (UserResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/{id}"
+    };
+  }
+
+  // Список пользователей с query-параметрами: /v1/users?page=2&limit=10
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {
+    option (google.api.http) = {
+      get: "/v1/users"
+    };
+  }
+
+  // Создание пользователя (POST /v1/users)
+  rpc CreateUser(CreateUserRequest) returns (UserResponse) {
+    option (google.api.http) = {
+      post: "/v1/users"
+      body: "*"
+    };
+  }
+
+  // Обновление по ID: PUT /v1/users/123
+  rpc UpdateUser(UpdateUserRequest) returns (UserResponse) {
+    option (google.api.http) = {
+      put: "/v1/users/{id}"
+      body: "*"
+    };
+  }
+
+  // Удаление пользователя по ID: DELETE /v1/users/123
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {
+    option (google.api.http) = {
+      delete: "/v1/users/{id}"
+    };
+  }
+}
+
+message GetUserRequest {
+  string id = 1; // path param
+}
+
+message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+}
+
+message UpdateUserRequest {
+  string id = 1;        // path param
+  string name = 2;
+  string email = 3;
+}
+
+message DeleteUserRequest {
+  string id = 1; // path param
+}
+
+message DeleteUserResponse {
+  string message = 1;
+}
+
+message ListUsersRequest {
+  int32 page = 1;  // query param
+  int32 limit = 2; // query param
+}
+
+message UserResponse {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message ListUsersResponse {
+  repeated UserResponse users = 1;
+  int32 total = 2;
+}
