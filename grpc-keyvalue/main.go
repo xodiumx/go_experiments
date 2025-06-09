@@ -1,7 +1,7 @@
 package main
 
 import (
-	"expr/grpc/server"
+	"grpc-keyvalue/server"
 )
 
 func main() {

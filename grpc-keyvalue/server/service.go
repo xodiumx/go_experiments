@@ -21,8 +21,8 @@ import (
 	"log"
 	"net"
 
-	pb "expr/grpc/kv"
 	"google.golang.org/grpc"
+	pb "grpc-keyvalue/kv"
 )
 
 type server struct {
@@ -44,7 +44,8 @@ func (s *server) Put(ctx context.Context, r *pb.PutRequest) (*pb.PutResponse, er
 }
 
 func StartServer() {
-	lis, err := net.Listen("tcp", ":50052")
+	log.Print("Starting server")
+	lis, err := net.Listen("tcp", ":50054")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}

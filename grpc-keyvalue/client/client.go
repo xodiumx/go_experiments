@@ -9,12 +9,12 @@ import (
 	"strings"
 	"time"
 
-	pb "expr/grpc/kv"
 	"google.golang.org/grpc"
+	pb "grpc-keyvalue/kv"
 )
 
 func main() {
-	conn, err := grpc.Dial("localhost:50052", grpc.WithInsecure())
+	conn, err := grpc.Dial("localhost:50054", grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("Failed to connect: %v", err)
 	}
@@ -27,6 +27,8 @@ func main() {
 		fmt.Print("> ")
 		input, _ := reader.ReadString('\n')
 		args := strings.Fields(input)
+
+		log.Printf("Args: %v", args)
 
 		if len(args) == 0 {
 			continue

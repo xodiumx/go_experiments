@@ -18,7 +18,7 @@
 // 	protoc        v5.29.3
 // source: keyvalue.proto
 
-package kv
+package keyvalue
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -324,7 +324,7 @@ const file_keyvalue_proto_rawDesc = "" +
 	"\bKeyValue\x12 \n" +
 	"\x03Get\x12\v.GetRequest\x1a\f.GetResponse\x12 \n" +
 	"\x03Put\x12\v.PutRequest\x1a\f.PutResponse\x12&\n" +
-	"\x06Delete\x12\x0e.DeleteRequest\x1a\f.PutResponseB8Z6github.com/cloud-native-go/examples/ch08/grpc/keyvalueb\x06proto3"
+	"\x06Delete\x12\x0e.DeleteRequest\x1a\f.PutResponseBAZ?github.com/cloud-native-go/examples/ch08/grpc-keyvalue/keyvalueb\x06proto3"
 
 var (
 	file_keyvalue_proto_rawDescOnce sync.Once

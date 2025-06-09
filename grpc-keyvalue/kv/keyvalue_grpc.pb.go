@@ -18,7 +18,7 @@
 // - protoc             v5.29.3
 // source: keyvalue.proto
 
-package kv
+package keyvalue
 
 import (
 	context "context"
