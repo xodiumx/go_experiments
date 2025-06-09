@@ -53,7 +53,7 @@ func main() {
 	}
 	s := grpc.NewServer()
 	pb.RegisterUserServiceServer(s, &server{})
-	log.Println("gRPC server listening on :50051")
+	log.Println("gRPC core listening on :50051")
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
