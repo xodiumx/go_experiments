@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
-	pb "grpc-keyvalue/kv"
+	pb "grpc-keyvalue/proto"
 )
 
 func main() {

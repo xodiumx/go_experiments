@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package server
+package core
 
 import (
 	"context"
@@ -22,7 +22,7 @@ import (
 	"net"
 
 	"google.golang.org/grpc"
-	pb "grpc-keyvalue/kv"
+	pb "grpc-keyvalue/proto"
 )
 
 type server struct {
@@ -44,7 +44,7 @@ func (s *server) Put(ctx context.Context, r *pb.PutRequest) (*pb.PutResponse, er
 }
 
 func StartServer() {
-	log.Print("Starting server")
+	log.Print("Starting core")
 	lis, err := net.Listen("tcp", ":50054")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)

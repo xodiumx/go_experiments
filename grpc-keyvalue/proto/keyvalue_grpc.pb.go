@@ -85,7 +85,7 @@ func (c *keyValueClient) Delete(ctx context.Context, in *DeleteRequest, opts ...
 	return out, nil
 }
 
-// KeyValueServer is the server API for KeyValue service.
+// KeyValueServer is the core API for KeyValue service.
 // All implementations must embed UnimplementedKeyValueServer
 // for forward compatibility.
 type KeyValueServer interface {
