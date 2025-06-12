@@ -1,4 +1,4 @@
-package patterns
+package main
 
 import (
 	"context"
@@ -19,7 +19,7 @@ func slowOperation(ctx context.Context) (int, error) {
 }
 
 func Stream(ctx context.Context, out chan<- int) error {
-	dctx, dcancel := context.WithTimeout(ctx, time.Second*3)
+	dctx, dcancel := context.WithTimeout(ctx, time.Second*3) // timeout for slow operation
 	defer dcancel()
 
 	res, err := slowOperation(dctx)
