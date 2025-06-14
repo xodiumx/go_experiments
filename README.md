@@ -1,5 +1,4 @@
 # My experiments with golang
-___
 
 ## Examples
 
@@ -13,3 +12,19 @@ ___
 ### gRPC-gateway example
 
 > In diretcory: `./grpc-gateway` - there is an example of implementation of api endpoints configured via grpc-gateway
+
+### OpenTelemetry
+
+> In diretcory: `./OpenTelemetry` - example of using opentelemetry 
+
+### Patterns
+
+> In diretcory: `./patterns` - examples of different programming patterns on go
+
+### WhereIsMyPython
+
+> In diretcory: `./WhereIsMyPython` - methods that are implemented in python but not in go
+
+### Zap
+
+> In diretcory: `./zap` - lib for fast logs
