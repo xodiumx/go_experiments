@@ -7,24 +7,24 @@
 
 ### gRPC example
 
-> In diretcory: `./grpc-keyvalue` - here is a simple example of a key/value store implementation configured via grpc
+> In diretcory: [grpc-keyvalue](./grpc-keyvalue) - here is a simple example of a key/value store implementation configured via grpc
 
 ### gRPC-gateway example
 
-> In diretcory: `./grpc-gateway` - there is an example of implementation of api endpoints configured via grpc-gateway
+> In diretcory: [grpc-gateway](./grpc-gateway) - there is an example of implementation of api endpoints configured via grpc-gateway
 
 ### OpenTelemetry
 
-> In diretcory: `./OpenTelemetry` - example of using opentelemetry 
+> In diretcory: [OpenTelemetry](./OpenTelemetry) - example of using opentelemetry 
 
 ### Patterns
 
-> In diretcory: `./patterns` - examples of different programming patterns on go
+> In diretcory: [patterns](./patterns) - examples of different programming patterns on go
 
 ### WhereIsMyPython
 
-> In diretcory: `./WhereIsMyPython` - methods that are implemented in python but not in go
+> In diretcory: [WhereIsMyPython](./WhereIsMyPython) - methods that are implemented in python but not in go
 
 ### Zap
 
-> In diretcory: `./zap` - lib for fast logs
+> In diretcory: [zap](./zap) - lib for fast logs
