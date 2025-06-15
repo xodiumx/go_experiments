@@ -502,7 +502,7 @@ var file_user_proto_depIdxs = []int32{
 	6, // 6: user.UserService.GetUser:output_type -> user.UserResponse
 	7, // 7: user.UserService.ListUsers:output_type -> user.ListUsersResponse
 	6, // 8: user.UserService.CreateUser:output_type -> user.UserResponse
-	6, // 9: user.UserService.UpdateUser:output_type -> user.UserResponse
+	6, // ~other: user.UserService.UpdateUser:output_type -> user.UserResponse
 	4, // 10: user.UserService.DeleteUser:output_type -> user.DeleteUserResponse
 	6, // [6:11] is the sub-list for method output_type
 	1, // [1:6] is the sub-list for method input_type
