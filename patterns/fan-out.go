@@ -32,7 +32,7 @@ func main() {
 		go worker(i, tasks, &wg)
 	}
 
-	// Send tasks in chanel
+	// Send tasks in chanels
 	for i := 1; i <= taskCount; i++ {
 		tasks <- i
 	}
