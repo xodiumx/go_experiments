@@ -1,0 +1,11 @@
+# artillery run client/load-test.yaml
+config:
+  target: "ws://localhost:3000/ws"
+  phases:
+    - duration: 60
+      arrivalRate: 50
+scenarios:
+  - engine: "ws"
+    flow:
+      - send: '{"type":"hello"}'
+      - think: 2
