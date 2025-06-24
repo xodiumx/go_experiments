@@ -1,4 +1,4 @@
-package repo
+package interfaces
 
 type User struct {
 	ID    int

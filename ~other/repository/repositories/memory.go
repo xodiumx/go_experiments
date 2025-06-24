@@ -1,23 +1,23 @@
-package memory
+package repositories
 
 import (
 	"errors"
-	"rep/repo"
+	"rep/interfaces"
 	"sync"
 )
 
 type InMemoryUserRepo struct {
-	data map[int]*repo.User
+	data map[int]*interfaces.User
 	mu   sync.RWMutex
 }
 
 func NewInMemoryUserRepo() *InMemoryUserRepo {
 	return &InMemoryUserRepo{
-		data: make(map[int]*repo.User),
+		data: make(map[int]*interfaces.User),
 	}
 }
 
-func (r *InMemoryUserRepo) GetByID(id int) (*repo.User, error) {
+func (r *InMemoryUserRepo) GetByID(id int) (*interfaces.User, error) {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
 	user, ok := r.data[id]
@@ -27,7 +27,7 @@ func (r *InMemoryUserRepo) GetByID(id int) (*repo.User, error) {
 	return user, nil
 }
 
-func (r *InMemoryUserRepo) Create(user *repo.User) error {
+func (r *InMemoryUserRepo) Create(user *interfaces.User) error {
 	r.mu.Lock()
 	defer r.mu.Unlock()
 	if _, exists := r.data[user.ID]; exists {

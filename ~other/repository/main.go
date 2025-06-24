@@ -2,16 +2,16 @@ package main
 
 import (
 	"fmt"
-	"rep/memory"
-	"rep/repo"
+	"rep/interfaces"
+	"rep/repositories"
 )
 
 func main() {
-	var repository repo.UserRepository = memory.NewInMemoryUserRepo()
+	var repository interfaces.UserRepository = repositories.NewInMemoryUserRepo()
 
 	fmt.Println("repository created", repository)
 
-	user := &repo.User{
+	user := &interfaces.User{
 		ID:    1,
 		Name:  "Maksim",
 		Email: "maksim@example.com",
