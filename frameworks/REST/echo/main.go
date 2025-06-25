@@ -16,11 +16,11 @@ func main() {
 	}))
 
 	svc := service.NewUserService()
-	h := router.NewHandler(svc)
+	handler := router.NewHandler(svc)
 
-	app.GET("/users/:id", h.GetUser)
-	app.POST("/users", h.CreateUser)
-	app.PUT("/users/:id", h.UpdateUser)
+	app.GET("/users/:id", handler.GetUser)
+	app.POST("/users", handler.CreateUser)
+	app.PUT("/users/:id", handler.UpdateUser)
 
 	app.Logger.Fatal(app.Start(":8080"))
 }

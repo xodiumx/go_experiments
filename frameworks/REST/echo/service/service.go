@@ -12,6 +12,7 @@ type User struct {
 	Email string `json:"email"`
 }
 
+//go:generate mockery --name=UserService --output=mocks --case=underscore
 type UserService interface {
 	GetUser(id int) (*User, error)
 	CreateUser(user *User) (*User, error)
