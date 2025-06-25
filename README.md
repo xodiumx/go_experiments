@@ -21,6 +21,10 @@
 
 > In diretcory: [websockets](./frameworks/websockets) - example of using websockets via diffs frameworks
 
+### REST
+
+> In diretcory: [REST](./frameworks/REST) - example of using REST via diffs frameworks
+
 ### Patterns
 
 > In diretcory: [patterns](./patterns) - examples of different programming patterns on go
