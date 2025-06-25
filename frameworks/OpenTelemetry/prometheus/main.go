@@ -129,7 +129,7 @@ func buildRuntimeObservers(meter metric.Meter) error {
 			o.Observe(int64(m.Sys), metric.WithAttributes(attributes...))
 			return nil
 		}),
-		metric.WithDescription("Amount of memory used."),
+		metric.WithDescription("Amount of repositories used."),
 		metric.WithUnit("By"),
 	)
 	if err != nil {
