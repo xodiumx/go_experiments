@@ -7,15 +7,19 @@
 
 ### gRPC example
 
-> In diretcory: [grpc-keyvalue](./grpc-keyvalue) - here is a simple example of a key/value store implementation configured via grpc
+> In diretcory: [grpc-keyvalue](./frameworks/grpc-keyvalue) - here is a simple example of a key/value store implementation configured via grpc
 
 ### gRPC-gateway example
 
-> In diretcory: [grpc-gateway](./grpc-gateway) - there is an example of implementation of api endpoints configured via grpc-gateway
+> In diretcory: [grpc-gateway](./frameworks/grpc-gateway) - there is an example of implementation of api endpoints configured via grpc-gateway
 
 ### OpenTelemetry
 
-> In diretcory: [OpenTelemetry](./OpenTelemetry) - example of using opentelemetry 
+> In diretcory: [OpenTelemetry](./frameworks/OpenTelemetry) - example of using opentelemetry 
+
+### Websockets
+
+> In diretcory: [websockets](./frameworks/websockets) - example of using websockets via diffs frameworks
 
 ### Patterns
 
