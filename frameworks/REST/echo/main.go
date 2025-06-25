@@ -1,23 +1,26 @@
 package main
 
 import (
-	"example/router"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+
+	"example/router"
+	"example/service"
 )
 
+// --- main --- //
 func main() {
-	e := echo.New()
-
-	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+	app := echo.New()
+	app.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Format: `${time_rfc3339} ${remote_ip} ${method} ${uri} ${status} ${latency_human}` + "\n",
 	}))
 
-	// Роуты
-	e.GET("/users/:id", router.GetUser)
-	e.POST("/users", router.CreateUser)
-	e.PUT("/users/:id", router.UpdateUser)
+	svc := service.NewUserService()
+	h := router.NewHandler(svc)
 
-	// Запуск сервера
-	e.Logger.Fatal(e.Start(":8080"))
+	app.GET("/users/:id", h.GetUser)
+	app.POST("/users", h.CreateUser)
+	app.PUT("/users/:id", h.UpdateUser)
+
+	app.Logger.Fatal(app.Start(":8080"))
 }

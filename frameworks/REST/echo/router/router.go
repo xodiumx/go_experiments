@@ -1,52 +1,52 @@
 package router
 
 import (
-	"example/schemas"
 	"github.com/labstack/echo/v4"
 	"net/http"
 	"strconv"
+
+	"example/service"
 )
 
-var users = map[int]*schemas.User{}
-var idCounter = 1
+// --- Хендлер --- //
+type Handler struct {
+	svc service.UserService
+}
 
-// GET /users/:id
-func GetUser(c echo.Context) error {
+func NewHandler(svc service.UserService) *Handler {
+	return &Handler{svc}
+}
+
+func (h *Handler) GetUser(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
-	user, ok := users[id]
-	if !ok {
-		return c.JSON(http.StatusNotFound, echo.Map{"error": "user not found"})
+	user, err := h.svc.GetUser(id)
+	if err != nil {
+		return err
 	}
 	return c.JSON(http.StatusOK, user)
 }
 
-// POST /users
-func CreateUser(c echo.Context) error {
-	u := new(schemas.User)
-	if err := c.Bind(u); err != nil {
-		return c.JSON(http.StatusBadRequest, echo.Map{"error": "invalid input"})
+func (h *Handler) CreateUser(c echo.Context) error {
+	var user service.User
+	if err := c.Bind(&user); err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, "invalid input")
 	}
-	u.ID = idCounter
-	idCounter++ // just example
-	users[u.ID] = u
-	return c.JSON(http.StatusCreated, u)
+	newUser, err := h.svc.CreateUser(&user)
+	if err != nil {
+		return err
+	}
+	return c.JSON(http.StatusCreated, newUser)
 }
 
-// PUT /users/:id
-func UpdateUser(c echo.Context) error {
+func (h *Handler) UpdateUser(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
-	existing, ok := users[id]
-	if !ok {
-		return c.JSON(http.StatusNotFound, echo.Map{"error": "user not found"})
+	var user service.User
+	if err := c.Bind(&user); err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, "invalid input")
 	}
-
-	u := new(schemas.User)
-	if err := c.Bind(u); err != nil {
-		return c.JSON(http.StatusBadRequest, echo.Map{"error": "invalid input"})
+	updated, err := h.svc.UpdateUser(id, &user)
+	if err != nil {
+		return err
 	}
-
-	// Обновляем только поля Name и Email
-	existing.Name = u.Name
-	existing.Email = u.Email
-	return c.JSON(http.StatusOK, existing)
+	return c.JSON(http.StatusOK, updated)
 }
